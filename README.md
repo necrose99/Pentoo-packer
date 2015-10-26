@@ -1,4 +1,6 @@
 ## Packer template for Pentoo
+adapted slighlty from Sabayon Packer Template
+In progress.... 
 
 Now you can build fresh vagrant, virtualbox and VMware Pentoo images with [packer](https://packer.io/).
 
