@@ -1,8 +1,8 @@
 #!/bin/bash
 
 chroot /mnt/pentoo /bin/bash <<'EOF'
-equo rm sys-kernel/pentoo-sources pentoo-live pentoo-artwork-isolinux
-equo cleanup
+emerge -C sys-kernel/pentoo-sources pentoo-live pentoo-artwork-isolinux
+emerge --clean  --verbose world
 
 cp /etc/systemd/system/autologin@.service \
     /usr/lib/systemd/system/getty@.service
