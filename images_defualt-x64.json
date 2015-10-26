@@ -44,7 +44,7 @@
          "guest_additions_mode":"disable",
          "guest_os_type":"Gentoo_64",
          "headless":true,
-         "iso_url":"http://na.mirror.garr.it/mirrors/sabayonlinux/iso/{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -95,7 +95,7 @@
          "disk_size": "{{user `disk_size`}}",
          "guest_os_type":"Gentoo_64",
          "headless":true,
-         "iso_url":"http://na.mirror.garr.it/mirrors/sabayonlinux/iso/{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -153,14 +153,14 @@
          "accelerator":"kvm",
          "disk_interface":"ide",
          "headless": true,
-         "iso_url":"http://na.mirror.garr.it/mirrors/sabayonlinux/iso/{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
          "ssh_username":"{{user `root_username`}}",
          "ssh_wait_timeout":"20s",
          "vm_name":"pentoo QEMU x64",
-         "qemuargs":[
+         "qemuargs":[ 
             [
                "-m",
                "1024M"
@@ -220,12 +220,11 @@
    "variables":{
       "root_username":"root",
       "root_password":"root",
-      "build":"DAILY",
-      "build_type":"daily",
+      "build":"default-2015.0_RC3.8", # Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso
+      "build_type":"default-2015.0_RC3.8",
       "arch":"amd64",
       "disk_size":"60000",
       "vagrant":"",
       "guest_additions": "",
-      "flavor":"x64"
-   }
+     }
 }
