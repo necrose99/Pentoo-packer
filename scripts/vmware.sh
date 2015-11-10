@@ -11,8 +11,8 @@ emerge "=virtual/linux-sources-1"
 
 emerge ">=app-emulation/open-vm-tools-9.4*" --autounmask-write
 etc-update --automode -5
-emerge ">=app-emulation/open-vm-tools-9.4*"
+emerge ">=app-emulation/open-vm-tools-kmod-9.4*"
 
 rc-update add open-vm-tools default
-rc-update add open-vm-tools default
+rc-update add open-vm-tools-kmod default
 EOF
