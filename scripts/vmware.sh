@@ -14,5 +14,5 @@ etc-update --automode -5
 emerge ">=app-emulation/open-vm-tools-kmod-9.4*"
 
 rc-update add open-vm-tools default
-rc-update add open-vm-tools-kmod default
+#rc-update add open-vm-tools-kmod default
 EOF
