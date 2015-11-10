@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Configuring virtualbox!"
+echo "Configuring vmware!"
 
 chroot /mnt/pentoo /bin/bash <<'EOF'
 rsync -av -H -A -X --delete-during "rsync://rsync.at.gentoo.org/gentoo-portage/licenses/" "/usr/portage/licenses/"
