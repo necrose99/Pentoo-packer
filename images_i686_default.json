@@ -44,13 +44,15 @@
          "guest_additions_mode":"disable",
          "guest_os_type":"Gentoo_64",
          "headless":true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
-         "iso_checksum_type":"none",
+         "iso_name": "Pentoo_Linux_x86_default_2015.0_RC4.3.iso",
+         "iso_url":"http://pentoo.east.us.mirror.inerail.net/Pentoo_x86_default/Pentoo_Linux_x86_default_2015.0_RC4.3.iso,
+        "iso_checksum":"1fe353fec7142a551348ba3aa1b42dcf73df8ad815340f7da30239357f8d6b2fa4a5e2db8075efde9b3c28fcf16b62d5f8045cfb9c57fa0bda55821fe5390d44",
+      "iso_checksum_type": "sha512",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
          "ssh_username":"{{user `root_username`}}",
          "ssh_wait_timeout":"20s",
-         "vm_name":"Pentoo VirtualBox x64"
+         "vm_name":"Pentoo_Linux_x86_default"
       },
       {
          "type":"vmware-iso",
@@ -95,7 +97,10 @@
          "disk_size": "{{user `disk_size`}}",
          "guest_os_type":"Gentoo_64",
          "headless":true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_name": "Pentoo_Linux_x86_default_2015.0_RC4.3.iso",
+         "iso_url":"http://pentoo.east.us.mirror.inerail.net/Pentoo_x86_default/Pentoo_Linux_x86_default_2015.0_RC4.3.iso,
+        "iso_checksum":"1fe353fec7142a551348ba3aa1b42dcf73df8ad815340f7da30239357f8d6b2fa4a5e2db8075efde9b3c28fcf16b62d5f8045cfb9c57fa0bda55821fe5390d44",
+      "iso_checksum_type": "sha512",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -153,7 +158,10 @@
          "accelerator":"kvm",
          "disk_interface":"ide",
          "headless": true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_name": "Pentoo_Linux_x86_default_2015.0_RC4.3.iso",
+         "iso_url":"http://pentoo.east.us.mirror.inerail.net/Pentoo_x86_default/Pentoo_Linux_x86_default_2015.0_RC4.3.iso,
+        "iso_checksum":"1fe353fec7142a551348ba3aa1b42dcf73df8ad815340f7da30239357f8d6b2fa4a5e2db8075efde9b3c28fcf16b62d5f8045cfb9c57fa0bda55821fe5390d44",
+      "iso_checksum_type": "sha512",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -220,12 +228,13 @@
    "variables":{
       "root_username":"root",
       "root_password":"root",
-      "build":"default-2015.0_RC3.8", # Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso
-      "build_type":"default-2015.0_RC3.8",
+      "build":"default-2015.0_RC3.8", # Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC4.3.iso
+      "build_type":"default-2015.0_RC4.3",
       "arch":"amd64",
       "disk_size":"60000",
       "vagrant":"",
       "guest_additions": "",
      }
 }
+
 
