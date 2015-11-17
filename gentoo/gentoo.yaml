@@ -1,0 +1,79 @@
+variables:
+  vm_name: Gentoo
+  build: '20140814'
+  iso_checksum: ddef2ef386ab6f9ddab9da8735d8671cfbe8c36a9ffce4b62ddde1f506b8672265c316f2e2cda21148f59133dc7fe4ce1ed3d840a6acd894910c5851f6eb01a1
+  mirror: http://ftp.iij.ad.jp/pub/linux/gentoo
+  march: core2
+  use: mmx sse sse2 systemd
+  profile: default/linux/amd64/13.0
+  timezone: Asia/Tokyo
+  hostname: packer
+  locale: en_US.UTF-8
+  keymap: jp106
+  root_passwd: packer
+  disk_size: 81920
+
+builders_base: &builders_base
+  vm_name: "{{user `vm_name`}}"
+  boot_wait: 5s
+  boot_command:
+    - <enter><wait10><wait10>
+    - <enter><wait10><wait10><wait10>
+    - passwd<enter><wait>
+    - packer<enter><wait>packer<enter>
+  iso_url: 'http://downloads.sourceforge.net/project/systemrescuecd/sysresccd-x86/4.0.0/systemrescuecd-x86-4.0.0.iso'
+  iso_checksum: bd67d9111ee7817aa1d634f244735af6
+  iso_checksum_type: md5
+  ssh_username: root
+  ssh_password: packer
+  shutdown_command: shutdown -h now
+  disk_size: "{{user `disk_size`}}"
+
+builders:
+- <<: *builders_base
+  name: vmware
+  type: vmware-iso
+  guest_os_type: other3xlinux-64
+  vmx_data:
+    memsize: 4096
+    numvcpus: 4
+- <<: *builders_base
+  name: virtualbox
+  type: virtualbox-iso
+  guest_os_type: Gentoo_64
+  vboxmanage:
+    - [ modifyvm, "{{.Name}}", --memory, 4096 ]
+    - [ modifyvm, "{{.Name}}", --cpus, 4 ]
+
+provisioners:
+- type: shell
+  environment_vars:
+    - 'GENTOO_BUILD="{{user `build`}}"'
+    - 'GENTOO_MIRROR="{{user `mirror`}}"'
+    - 'GENTOO_MARCH="{{user `march`}}"'
+    - 'GENTOO_USE="{{user `use`}}"'
+    - 'GENTOO_PROFILE="{{user `profile`}}"'
+    - 'GENTOO_TIMEZONE="{{user `timezone`}}"'
+    - 'GENTOO_HOSTNAME="{{user `hostname`}}"'
+    - 'GENTOO_KEYMAP="{{user `keymap`}}"'
+    - 'GENTOO_LOCALE="{{user `locale`}}"'
+    - 'GENTOO_ROOT_PASSWD="{{user `root_passwd`}}"'
+  scripts:
+    - scripts/partition.sh
+    - scripts/mount.sh
+    - scripts/stage3.sh
+    - scripts/make_conf.sh
+    - scripts/chroot.sh
+    - scripts/portage.sh
+    - scripts/systemd.sh
+    - scripts/timezone.sh
+    - scripts/upgrade.sh
+    - scripts/kernel.sh
+    - scripts/fstab.sh
+    - scripts/grub.sh
+    - scripts/passwd.sh
+    - scripts/settings.sh
+    - scripts/sshd.sh
+    - scripts/salt.sh
+    - scripts/network.sh
+

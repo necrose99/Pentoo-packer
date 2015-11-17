@@ -1,0 +1,128 @@
+builders: 
+ - 
+   type: "virtualbox-iso"
+  boot_command: 
+   - 
+   "<down>"
+   - 
+   "<enter>"
+   - 
+   "<enter>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "passwd {{user `root_username`}}"
+   - 
+   "<enter>"
+   - 
+   "<wait>"
+   - 
+   "{{user `root_password`}}"
+   - 
+   "<enter>"
+   - 
+   "<wait>"
+   - 
+   "{{user `root_password`}}"
+   - 
+   "<enter>"
+   - 
+   "<wait10>"
+   - 
+   "equo up && echo 3 | equo i openssh"
+   - 
+   "<enter>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+   - 
+   "<wait>"
+   - 
+   "sed -i -e 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config"
+   - 
+   "<enter>"
+   - 
+   "echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config"
+   - 
+   "<enter>"
+   - 
+   "sed -i -e 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config"
+   - 
+   "<enter>"
+   - 
+   "systemctl start sshd"
+   - 
+   "<enter>"
+   - 
+   "<wait10>"
+   - 
+   "<wait10>"
+  boot_wait: 5s
+  disk_size: "{{user `disk_size`}}"
+  guest_additions_mode: disable
+  guest_os_type: Gentoo_64
+  headless: true
+  iso_url: "http://na.mirror.garr.it/mirrors/sabayonlinux/iso/{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso"
+  iso_checksum_type: none
+  shutdown_command: "shutdown -hP now"
+  ssh_password: "{{user `root_password`}}"
+  ssh_username: "{{user `root_username`}}"
+  ssh_wait_timeout: 20s
+  vm_name: "Sabayon VirtualBox SpinBase"
+description: "Sabayon SpinBase"
+"post-processors": 
+ - 
+   - 
+   output: "Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.box"
+   type: vagrant
+  - 
+   type: atlas
+   token: "{{user `atlas_token`}}"
+   artifact: "Sabayon/spinbase-amd64"
+   artifact_type: "vagrant.box"
+   metadata: 
+    created_at: "{{timestamp}}"
+    provider: virtualbox
+provisioners: 
+ - 
+   destination: "/tmp"
+  source: scripts
+  type: file
+ - 
+   environment_vars: 
+   - 
+   "SCRIPTS=/tmp"
+   - 
+   "VAGRANT={{user `vagrant`}}"
+   - 
+   "GUEST_ADDITIONS={{user `guest_additions`}}"
+  scripts: 
+   - 
+   "provision.sh"
+  type: shell
+variables: 
+ atlas_token: "{{env `ATLAS_TOKEN`}}"
+ root_username: root
+ root_password: root
+ build: DAILY
+ build_type: daily
+ arch: amd64
+ disk_size: 60000
+ vagrant: vagrant
+ guest_additions: virtualbox
+ flavor: SpinBase
