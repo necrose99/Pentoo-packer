@@ -44,7 +44,7 @@
          "guest_additions_mode":"disable",
          "guest_os_type":"Gentoo_64",
          "headless":true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/{{user `build_type`}}/_{{user `build`}}_{{user `arch`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/latest-iso-symlinks/pentoo-x86-default.iso",
          #http://www.pentoo.ch/isos/Pentoo_amd64_default/
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",

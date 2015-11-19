@@ -30,7 +30,7 @@
       "headless": true,
       "iso_checksum": "20dc09c811940c8742a9d1c7fa6da7cf8eaecf6c24797c67a00ba3d36e80d66f3d2555c6dbe9be303c0304cbdf51eaaca2deda8f523872912f58119663b4ffc5",
       "iso_checksum_type": "sha512",
-      "iso_url": "http://distfiles.gentoo.org/releases/amd64/autobuilds/{{user `stage3`}}/install-amd64-minimal-{{user `stage3`}}.iso",
+      "iso_url": "http://www.pentoo.ch/isos/latest-iso-symlinks/pentoo-x86-default.iso",
       "shutdown_command": "shutdown -hP now",
       "ssh_password": "{{user `password`}}",
       "ssh_username": "{{user `username`}}",
