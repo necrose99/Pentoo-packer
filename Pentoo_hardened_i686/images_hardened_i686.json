@@ -42,9 +42,9 @@
          "boot_wait":"5s",
          "disk_size": "{{user `disk_size`}}",
          "guest_additions_mode":"disable",
-         "guest_os_type":"Gentoo_64",
+         "guest_os_type":"Gentoo_86",
          "headless":true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/latest-iso-symlinks/pentoo-x86-hardened.iso",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -93,9 +93,9 @@
          ],
          "boot_wait":"5s",
          "disk_size": "{{user `disk_size`}}",
-         "guest_os_type":"Gentoo_64",
+         "guest_os_type":"Gentoo_86",
          "headless":true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/latest-iso-symlinks/pentoo-x86-hardened.iso",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -104,8 +104,8 @@
          "vm_name":"pentoo VMware x64",
          "vmx_data": {
            "cpuid.coresPerSocket": "1",
-           "memsize": "1024",
-           "numvcpus": "1"
+           "memsize": "2048",
+           "numvcpus": "2"
          }
       },
       {
@@ -153,7 +153,7 @@
          "accelerator":"kvm",
          "disk_interface":"ide",
          "headless": true,
-         "iso_url":"http://www.pentoo.ch/isos/Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso{{user `build_type`}}/Sabayon_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.iso",
+         "iso_url":"http://www.pentoo.ch/isos/latest-iso-symlinks/pentoo-x86-hardened.iso",
          "iso_checksum_type":"none",
          "shutdown_command":"shutdown -hP now",
          "ssh_password":"{{user `root_password`}}",
@@ -163,7 +163,7 @@
          "qemuargs":[ 
             [
                "-m",
-               "1024M"
+               "2048"
             ]
          ]
       }
@@ -171,7 +171,7 @@
    "description":"pentoo x64",
    "post-processors":[
       {
-            "output":"pentoo_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}.box",
+            "output":"pentoo-x86-hardened.box",
             "type":"vagrant",
 	    "only":[
 	            "virtualbox-iso"
@@ -179,21 +179,21 @@
       },
       {
          "type":"compress",
-         "output":"Pentoo_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}-vmware.tar.gz",
+         "output":"pentoo-x86-hardened-vmware.tar.gz",
          "only":[
             "vmware-iso"
          ]
       },
       {
          "type":"compress",
-         "output":"Pentoo_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}-ovf.tar.gz",
+         "output":"pentoo-x86-hardened-ovf.tar.gz",
          "only":[
             "virtualbox-iso"
          ]
       },
       {
          "type":"compress",
-         "output":"Pentoo_Linux_{{user `build`}}_{{user `arch`}}_{{user `flavor`}}-qemu.tar.gz",
+         "output":"pentoo-x86-hardened-qemu.tar.gz",
          "only":[
             "qemu"
          ]
@@ -220,7 +220,7 @@
    "variables":{
       "root_username":"root",
       "root_password":"root",
-      "build":"default-2015.0_RC3.8", # Pentoo_amd64_default/pentoo-amd64-default-2015.0_RC3.8.iso
+      "build":"latest-pentoo-x86-hardened.iso",
       "build_type":"default-2015.0_RC3.8",
       "arch":"amd64",
       "disk_size":"60000",
